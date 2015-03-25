@@ -1,6 +1,6 @@
 class SpotsController < ApplicationController
 
-	before_action :find_spot, only: [:show, :edit, :update, :destroy]
+	before_action :find_spot, only: [:show, :edit, :update, :destroy, :upvote]
 
 
 	def index
@@ -38,6 +38,11 @@ class SpotsController < ApplicationController
 	def destroy
 		@spot.destroy
 		redirect_to root_path
+	end
+
+	def upvote
+		@spot.upvote_by current_user
+		redirect_to :back
 	end
 
 	private

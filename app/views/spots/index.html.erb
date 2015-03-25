@@ -1,11 +1,9 @@
 <div id="spots" class="transitions-enabled">
 	<% @spots.each do |spot| %>
 		<div class="box panel panel-default">
-			<%= link_to (image_tag spot.image.url), spot %>
-			<% link_to spot %>
+			<%= link_to (image_tag spot.image), spot %>
 			<div class="panel-body">
-				<h4><%= link_to spot.vehicle, spot %></h4>
-				<p><%= spot.description %></p>
+				<p class="pull-left"><%= link_to spot.vehicle, spot %></p>
 			</div>
 		</div>
 	<% end %>

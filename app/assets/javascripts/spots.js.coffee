@@ -7,3 +7,16 @@ $ ->
 		$('#spots').masonry
 			itemSelector: '.box'
 			isFitWidth: true
+
+$ ->
+	$('#spots').imagesLoaded ->
+    $('#spots').masonry
+      itemSelector: '.box'
+      columnWidth: 3
+      isFitWidth: true
+      isAnimated:true
+      animationOptions: {
+        duration: 700,
+        easing:'linear',
+        queue :false
+ 			}
