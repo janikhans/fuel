@@ -4,6 +4,9 @@
 			<%= link_to (image_tag spot.image), spot %>
 			<div class="panel-body">
 				<p class="pull-left"><%= link_to spot.vehicle, spot %></p>
+				<%= link_to like_spot_path(spot), method: :put, class: "btn btn-default pull-right" do %>
+						<span class="glyphicon glyphicon-heart"> <%= spot.get_upvotes.size %></span>
+					<% end %>
 			</div>
 		</div>
 	<% end %>

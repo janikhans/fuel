@@ -1,6 +1,7 @@
 class SpotsController < ApplicationController
 
 	before_action :find_spot, only: [:show, :edit, :update, :destroy, :upvote]
+	before_action :authenticate_user!, except: [:index, :show]
 
 
 	def index
