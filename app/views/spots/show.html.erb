@@ -1,5 +1,6 @@
 <h1><%= @spot.vehicle %></h1>
 <h2><%= @spot.description %></h2>
+<p>Spotted by <%= @spot.user.email %> </p> 
 
 <%= link_to "Back", root_path %>
 <%= link_to "Edit", edit_spot_path %>

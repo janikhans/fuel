@@ -11,11 +11,11 @@ class SpotsController < ApplicationController
 	end
 
 	def new
-		@spot = Spot.new
+		@spot = current_user.spots.build
 	end
 
 	def create
-		@spot = Spot.new(spot_params)
+		@spot = current_user.spots.build(spot_params)
 
 		if @spot.save
 			redirect_to @spot, notice: "Succesfully added a new Spot!"
