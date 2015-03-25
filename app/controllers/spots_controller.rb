@@ -1,6 +1,6 @@
 class SpotsController < ApplicationController
 
-	before_action :find_spot, only: [:show, :edit, :update, :destroy, :upvote]
+	before_action :find_spot, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 	before_action :authenticate_user!, except: [:index, :show]
 
 
@@ -44,6 +44,11 @@ class SpotsController < ApplicationController
 
 	def upvote
 		@spot.upvote_by current_user
+		redirect_to :back
+	end
+
+	def downvote
+		@spot.downvote_from current_user
 		redirect_to :back
 	end
 

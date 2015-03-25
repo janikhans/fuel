@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :spots do
     resources :comments
     member do
-      put "like", to: "spots#upvote"
+      get "like", to: "spots#upvote"
+      get "dislike", to: "spots#downvote"
     end
   end
   

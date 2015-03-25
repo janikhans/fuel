@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
 	def create
 		@spot = Spot.find(params[:spot_id])
 		@comment = Comment.create(params[:comment].permit(:content))
-		@comment.user_id = current_user.id
+		@comment.user = current_user
 		@comment.spot_id = @spot.id
 
 		if @comment.save

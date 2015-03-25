@@ -24,8 +24,11 @@
 						</div>
 						<div class="col-md-6">
 							<div class="btn-group pull-right">
-								<%= link_to like_spot_path(@spot), method: :put, class: "btn btn-default" do %>
-									<span class="glyphicon glyphicon-heart"> <%= @spot.get_upvotes.size %></span>
+								<%= link_to like_spot_path(@spot), method: :get, class: "btn btn-default" do %>
+									<span class="fa fa-thumbs-o-up"> <%= @spot.get_upvotes.size %></span>
+								<% end %>
+								<%= link_to dislike_spot_path(@spot), method: :get, class: "btn btn-default" do %>
+									<span class="fa fa-thumbs-o-down"> <%= @spot.get_downvotes.size %></span>
 								<% end %>
 								<% if current_user == @spot.user %>
 									<%= link_to "Edit", edit_spot_path, class: "btn btn-default" %>
