@@ -1,0 +1,13 @@
+<div id="spots">
+	<% @spots.each do |spot| %>
+		<div class="box panel panel-default">
+			<% link_to spot %>
+			<div class="panel-body">
+				<h2><%= link_to spot.vehicle, spot %></h2>
+				<h2><%= spot.description %>
+			</div>
+		</div>
+	<% end %>
+</div>
+
+<%= link_to "New Spot", new_spot_path %>

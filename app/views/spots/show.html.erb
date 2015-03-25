@@ -1,0 +1,6 @@
+<h1><%= @spot.vehicle %></h1>
+<h2><%= @spot.description %></h2>
+
+<%= link_to "Back", root_path %>
+<%= link_to "Edit", edit_spot_path %>
+<%= link_to "Delete", spot_path, method: :delete, data: {confirm: "Are you sure?"} %>
