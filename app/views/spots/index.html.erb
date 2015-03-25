@@ -1,6 +1,7 @@
 <div id="spots">
 	<% @spots.each do |spot| %>
 		<div class="box panel panel-default">
+			<%= link_to (image_tag spot.image.url(:medium)), spot %>
 			<% link_to spot %>
 			<div class="panel-body">
 				<h2><%= link_to spot.vehicle, spot %></h2>
