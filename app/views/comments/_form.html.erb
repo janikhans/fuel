@@ -1,0 +1,6 @@
+<%= simple_form_for([@spot, @spot.comments.build]) do |f| %>
+  <div class="form-group">
+    <%= f.input :content, label: "Give this man a hand", input_html: {class: 'form-control'} %>
+  </div>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>

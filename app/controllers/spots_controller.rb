@@ -9,6 +9,7 @@ class SpotsController < ApplicationController
 	end
 
 	def show
+		@comments = Comment.where(spot_id: @spot)
 	end
 
 	def new

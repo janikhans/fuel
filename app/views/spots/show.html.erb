@@ -1,69 +1,53 @@
-<div id="spot_show" class="row">
-	<div class="col-md-8">
-		<div class="panel panel-default">
-			<div class="panel-heading spot_image">
-				<%= image_tag @spot.image.url(:large) %>
-			</div>
-			<div class="panel-body">
-				<h1><%= @spot.vehicle %></h1>
-				<p><%= @spot.description %></p>	
-			</div>
-			<div class="panel-footer">
-				<div class="row">
-					<div class="col-md-6">
-						<% if current_user == @spot.user %>
-							<p>
-								You spotted it, want to change it? 
-							</p>
-						<% else %>
-							<%= link_to like_spot_path(@spot), method: :put, class: "btn btn-default" do %>
-								<span class="glyphicon glyphicon-flash"> Challenge</span>
-							<% end %>
-						<% end %>
-					</div>
-					<div class="col-md-6">
-						<div class="btn-group pull-right">
-							<%= link_to like_spot_path(@spot), method: :put, class: "btn btn-default" do %>
-								<span class="glyphicon glyphicon-heart"> <%= @spot.get_upvotes.size %></span>
-							<% end %>
+<div class="row">
+	<div id="spot_show">
+		<div class="col-md-8">
+			<div class="panel panel-default">
+				<div class="panel-heading spot_image">
+					<%= image_tag @spot.image.url(:large) %>
+				</div>
+				<div class="panel-body">
+					<h1><%= @spot.vehicle %></h1>
+					<p><%= @spot.description %></p>	
+				</div>
+				<div class="panel-footer">
+					<div class="row">
+						<div class="col-md-6">
 							<% if current_user == @spot.user %>
-								<%= link_to "Edit", edit_spot_path, class: "btn btn-default" %>
-								<%= link_to "Delete", spot_path, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default" %>
+								<p>
+									You spotted it, want to change it? 
+								</p>
+							<% else %>
+								<%= link_to like_spot_path(@spot), method: :put, class: "btn btn-default" do %>
+									<span class="glyphicon glyphicon-flash"> Challenge</span>
+								<% end %>
 							<% end %>
+						</div>
+						<div class="col-md-6">
+							<div class="btn-group pull-right">
+								<%= link_to like_spot_path(@spot), method: :put, class: "btn btn-default" do %>
+									<span class="glyphicon glyphicon-heart"> <%= @spot.get_upvotes.size %></span>
+								<% end %>
+								<% if current_user == @spot.user %>
+									<%= link_to "Edit", edit_spot_path, class: "btn btn-default" %>
+									<%= link_to "Delete", spot_path, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default" %>
+								<% end %>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			<div id="comments">
+				<h2 class="comment_count"><%= pluralize(@spot.comments.count, "Comment") %></h2>
+				<% @comments.each do |comment| %>
+					<div class="comment">
+						<p class="username"><%= comment.user.email %></p>
+						<p class="content"><%= comment.content %></p>
+					</div>
+				<% end %>
+				<%= render 'comments/form' %>
+			</div>
 		</div>
-	</div>
 	<div class="col-sm-6 col-md-4 ">
-         <!--
-            ****** PROFILE WIDGET *******
-            -->
-         <div id="profile-widget" class="panel">
-            <div class="panel-heading">
-            </div>
-            <div class="panel-body">
-               <div class="media">
-                  <a class="pull-left" href="#">
-                  <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/flashmurphy/128.jpg">
-                  </a>
-                  <div class="media-body">
-                     <h2 class="media-heading"><%= @spot.user.email %></h2>
-                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </div>
-               </div>
-            </div>
-            <div class="panel-footer">
-               <div class="btn-group btn-group-justified">
-                  <a class="btn btn-default" role="button"><i class="fa fa-eye"></i> 172</a>
-                  <a class="btn btn-default" role="button"><i class="fa fa-comment"></i> 34</a>
-                  <a class="btn btn-default highlight" role="button"><i class="fa fa-heart"></i> 210</a>
-               </div>
-            </div>
-         </div>
+		<%= render 'layouts/profile' %>
+	</div>
 </div>
-
-
-
-
