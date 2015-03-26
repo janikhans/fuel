@@ -13,11 +13,12 @@
 					<div class="row">
 						<div class="col-md-6">
 							<% if current_user == @spot.user %>
-								<p>
-									You spotted it, want to change it? 
-								</p>
+								<div class="btn-group pull-left">
+									<%= link_to "Edit", edit_spot_path, class: "btn btn-default" %>
+									<%= link_to "Delete", spot_path, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default" %>
+								</div>
 							<% else %>
-								<%= link_to like_spot_path(@spot), method: :put, class: "btn btn-default" do %>
+								<%= link_to "#", class: "btn btn-default" do %>
 									<span class="glyphicon glyphicon-flash"> Challenge</span>
 								<% end %>
 							<% end %>
@@ -29,10 +30,6 @@
 								<% end %>
 								<%= link_to dislike_spot_path(@spot), method: :get, class: "btn btn-default" do %>
 									<span class="fa fa-thumbs-o-down"> <%= @spot.get_downvotes.size %></span>
-								<% end %>
-								<% if current_user == @spot.user %>
-									<%= link_to "Edit", edit_spot_path, class: "btn btn-default" %>
-									<%= link_to "Delete", spot_path, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default" %>
 								<% end %>
 							</div>
 						</div>

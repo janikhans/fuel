@@ -7,31 +7,27 @@
     <div class="col-sm-3">
             <!--left col-->
       <div class="panel panel-default">
-       	<div class="panel-heading">
-       		<a href="/users" ><img title="profile image" class="img-circle img-responsive" style="text-align:center" src="http://www.rlsandbox.com/img/profile.jpg"></a>
-       		<strong><h1 style="text-align:center"><%= @user.username %></h1></strong>
+       	<div class="panel-body">
+          <%= image_tag(@user.avatar.url(:medium), class: "img-circle img-responsive img-deco") %>	
        	</div>
+        <div class="panel-heading">
+          <strong><h1 style="text-align:center"><%= @user.username %></h1></strong>
+        </div>
       </div>
 	      <ul class="list-group">
 	          <li class="list-group-item text-muted" contenteditable="false">Profile</li>
 	          <li class="list-group-item text-right"><span class="pull-left"><strong class="">Joined</strong></span><%= @user.created_at.strftime("%b %d, %Y") %></li>
-	          <li class="list-group-item text-right"><span class="pull-left"><strong class="">Last seen</strong></span><%= time_ago_in_words(@user.last_sign_in_at) %></li>
+	          <li class="list-group-item text-right"><span class="pull-left"><strong class="">Last seen</strong></span><%= time_ago_in_words(@user.last_sign_in_at) %> ago</li>
 	        	<li class="list-group-item text-right"><span class="pull-left"><strong class="">Rank: </strong></span> Car Czar</li>
 	      </ul>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-        	Insured / Bonded?
-        </div>
-        <div class="panel-body">
-        	<i style="color:green" class="fa fa-check-square"></i> Yes, I am insured and bonded.
-        </div>
-      </div>
+      <% if @user.website? %>
       <div class="panel panel-default">
           <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i>
           </div>
-          <div class="panel-body"><a href="http://bootply.com" class="">janikknittle.com</a>
+          <div class="panel-body"><%= link_to @user.website, "http://#{@user.website}", target: "_blank" %>
           </div>
       </div>
+      <% end %>
       <ul class="list-group">
           <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
           <li class="list-group-item text-right"><span class="pull-left"><strong class="">Spots</strong></span> <%= @user.spots.size %></li>
@@ -41,8 +37,22 @@
       </ul>
       <div class="panel panel-default">
           <div class="panel-heading">Social Media</div>
-          <div class="panel-body">	<i class="fa fa-facebook fa-2x"></i>  <i class="fa fa-github fa-2x"></i> 
-              <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i>  <i class="fa fa-google-plus fa-2x"></i>
+          <div class="panel-body">
+            <%= link_to "http://#{@user.facebook}", target: "_blank" do %>
+              <span class="fa fa-facebook fa-2x"> 
+            <% end %>
+            <%= link_to "http://#{@user.twitter}", target: "_blank" do %>
+              <span class="fa fa-twitter fa-2x">
+            <% end %>
+            <%= link_to "http://#{@user.instagram}", target: "_blank" do %>
+              <span class="fa fa-instagram fa-2x">
+            <% end %>
+            <%= link_to "http://#{@user.google_plus}", target: "_blank" do %>
+              <span class="fa fa-google-plus fa-2x">
+            <% end %>
+            <%= link_to "http://#{@user.youtube}", target: "_blank" do %>
+              <span class="fa fa-youtube fa-2x">
+            <% end %>
           </div>
       </div>
     </div>
@@ -50,11 +60,17 @@
       <div class="col-sm-9" style="" contenteditable="false">
           <div class="panel panel-default">
               <div class="panel-heading"><%= @user.username %>'s Bio</div>
-              <div class="panel-body"> A long description about me.
+              <div class="panel-body"> <%= @user.bio %>
               </div>
           </div>
           <div class="panel panel-default target">
-              <div class="panel-heading" contenteditable="false">Spots</div>
+              <div class="panel-heading" contenteditable="false">
+                <%= @user.username %>'s Spots
+                <% if @user == current_user %>
+                  <%= link_to "Spot Something?", new_spot_path, class: "pull-right" %>
+                <% end %>
+
+              </div>
               <div class="panel-body">
                 <div class="row">
                 	<%= render @spots %>
