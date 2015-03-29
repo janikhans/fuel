@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default fuel-nav">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -28,6 +28,15 @@
 					<li><%= link_to "Sign In", new_user_session_path %></li>
 				<% end %>
       </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="input-group">
+            <input type="text" class="form-control fuel-search emboss" placeholder="Search" name="srch-term" id="srch-term">
+            <div class="input-group-btn">
+                <button class="btn btn-default fuel-search-btn emboss" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
+<!--         <button type="submit" class="btn btn-default"><i class= "fa fa-search"></i></button> -->
+      </form>
     </div><!--/.nav-collapse -->
   </div><!--/.container-fluid -->
 </nav>

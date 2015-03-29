@@ -4,12 +4,13 @@
   <title>Fuel</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 </head>
 <body>
 	
+	<%= render 'layouts/navbar' %>
 	<div class="container">
-		<%= render 'layouts/navbar' %>
 		<% flash.each do |name, msg| %>
 			<%= content_tag(:div, msg, class:"alert alert-info") %>
 		<% end %>
