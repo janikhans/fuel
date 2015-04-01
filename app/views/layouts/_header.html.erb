@@ -1,0 +1,29 @@
+<header class="intro">
+	<div class="intro-body">
+		<% if @welcome_message %>
+			<div class="container">
+				<div class="row">                    
+					<div class="col-md-8 col-md-offset-2">
+						<h1 class="brand-heading">Fuel</h1>
+						<p class="intro-text">A free, responsive, totally fucking awesome web app.<br>Created by Janik 'Motherfuckin Hans' Knittle</p>
+					</div>               
+				</div>
+			</div>
+		<% elsif @profile_message %>
+			<div class="container ">
+				<div class="row">
+			    <div class="col-xs-12">
+			      <div class="well user-box emboss">
+			        <div class="dp-box">
+			          <%= image_tag(@user.avatar.url, class: "img-circle img-responsive dp-box-image") %>
+			        </div>
+			        <div class="profile">
+			          <h1><% if current_user == @user %><b>Sup',</b><% else %> <b>Checkin' Out,</b> <% end %> <%= @user.username %></h1>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		<% end %>
+	</div>   
+</header>

@@ -6,6 +6,7 @@ class SpotsController < ApplicationController
 
 	def index
 		@spots = Spot.all.order("created_at DESC")
+		@welcome_message = true
 	end
 
 	def show
