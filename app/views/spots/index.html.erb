@@ -2,7 +2,7 @@
 <div id="spots" class="transitions-enabled">
 	<% @spots.each do |spot| %>
 		<div class="box panel-default">
-			<div class="panel-heading fuel-header-no-padding"><%= link_to (image_tag spot.image), spot, class:"panel-image" %></div>
+			<div class="panel-heading fuel-header-no-padding"><%= link_to (image_tag spot.image.url), spot, class:"panel-image" %></div>
 			<div class="panel-body fuel-body emboss front">
 				<p class="pull-left"><%= link_to spot.vehicle, spot %></p>
 				<%= link_to like_spot_path(spot), method: :get, class: "btn btn-default fuel-button emboss pull-right" do %>
