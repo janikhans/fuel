@@ -16,7 +16,7 @@ gem 'paperclip', '~> 4.2'
 gem 'masonry-rails'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'font-awesome-rails'
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 
 group :development, :test do
   gem 'byebug'
