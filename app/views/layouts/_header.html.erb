@@ -1,6 +1,6 @@
 <header class="intro">
 	<div class="intro-body">
-		<% if @welcome_message %>
+		<% if @welcome_message && !user_signed_in? %>
 			<div class="container">
 				<div class="row">                    
 					<div class="col-md-8 col-md-offset-2">
@@ -24,7 +24,7 @@
 			    </div>
 			  </div>
 			</div>
-			<% elsif @spot_profile %>
+		<% elsif @spot_profile %>
 			<div class="container ">
 				<div class="row">
 			    <div class="col-xs-12">
@@ -38,6 +38,14 @@
 			      </div>
 			    </div>
 			  </div>
+			</div>
+		<% else %>
+			<div class="container">
+				<div class="row">                    
+					<div class="col-md-8 col-md-offset-2">
+						<h1 class="brand-heading"><b><i>Fuel</i></b></h1>
+					</div>               
+				</div>
 			</div>
 		<% end %>
 	</div>   
