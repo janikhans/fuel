@@ -24,6 +24,21 @@
 			    </div>
 			  </div>
 			</div>
+			<% elsif @spot_profile %>
+			<div class="container ">
+				<div class="row">
+			    <div class="col-xs-12">
+			      <div class="well user-box emboss">
+			        <div class="dp-box">
+			          <%= image_tag(@spot.user.avatar.url, class: "img-circle img-responsive dp-box-image") %>
+			        </div>
+			        <div class="profile">
+			          <h1><% if current_user == @spot.user %><b>Feelin' narcissistic are we,</b><% else %> <b>Spotted By,</b> <% end %> <%= @spot.user.username %></h1>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+			</div>
 		<% end %>
 	</div>   
 </header>

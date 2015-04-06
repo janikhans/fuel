@@ -11,6 +11,7 @@ class SpotsController < ApplicationController
 
 	def show
 		@comments = Comment.where(spot_id: @spot)
+		@spot_profile = true
 	end
 
 	def new
